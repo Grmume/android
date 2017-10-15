@@ -223,6 +223,11 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     private TextView mOAuthTokenEndpointText;
     private EditText mUsernameInput;
     private EditText mPasswordInput;
+
+    /// Authentication advanced elements
+    private EditText mWifiSsidInput;
+    private EditText mLocalUrlInput;
+
     private View mOkButton;
     private TextView mAuthStatusView;
     private ImageButton mTestServerButton;
@@ -562,6 +567,9 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         mOAuth2Check = (CheckBox) findViewById(R.id.oauth_onOff_check);
         mServerStatusView = (TextView) findViewById(R.id.server_status_text);
         mTestServerButton = (ImageButton) findViewById(R.id.testServerButton);
+
+        mWifiSsidInput = (EditText) findViewById(R.id.wifi_ssid);
+        mLocalUrlInput = (EditText) findViewById(R.id.local_ip);
 
         mOkButton = findViewById(R.id.buttonOK);
         mOkButton.setOnClickListener(v -> onOkClick());
@@ -1951,6 +1959,25 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
                     mAccount,
                     Constants.KEY_OC_ACCOUNT_VERSION,
                     Integer.toString(AccountUtils.ACCOUNT_VERSION)
+            );
+
+            // include wifi ssid and local network url of server in account
+            // TODO Add the string constants to Constants.
+            mAccountMgr.setUserData(
+                    mAccount,
+                    "wifi_ssid",
+                    mWifiSsidInput.getText().toString()
+            );
+
+            Uri localUri = Uri.parse(mLocalUrlInput.getText().toString());
+
+            String localAccountName = com.owncloud.android.lib.common.accounts.AccountUtils.
+                    buildAccountName(uri, username);
+
+            mAccountMgr.setUserData(
+                    mAccount,
+                    "localAccountName",
+                    localAccountName
             );
 
             /// add the new account as default in preferences, if there is none already

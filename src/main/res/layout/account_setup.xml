@@ -262,7 +262,49 @@
             android:contentDescription="@string/setup_btn_connect"
             android:visibility="gone"/>
 
-        <LinearLayout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/advanced_settings_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/advanced_settings"
+                    android:textColor="@color/login_text_color"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_wifi_ssid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/wifi_ssid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/wifi_ssid"
+                        android:inputType="textNoSuggestions"
+                        android:textColor="@color/login_text_color"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_local_ip"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/local_ip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/localAddress"
+                        android:inputType="textUri"
+                        android:textColor="@color/login_text_color" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center|bottom">

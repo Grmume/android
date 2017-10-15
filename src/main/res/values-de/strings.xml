@@ -64,6 +64,9 @@
     <string name="auth_host_url">Server-Adresse https://&#8230;</string>
     <string name="auth_username">Benutzername</string>
     <string name="auth_password">Passwort</string>
+    <string name="advanced_settings">Erweiterte Einstellungen</string>
+    <string name="wifi_ssid">WLan-SSID</string>
+    <string name="localAddress">Lokale Adresse</string>
     <string name="auth_register">Du hast noch keinen Server?\nKlicke hier um Server-Anbieter zu finden</string>
     <string name="sync_string_files">Dateien</string>
     <string name="setup_btn_connect">Verbinden</string>
