@@ -1211,15 +1211,20 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
             return;
         }
 
-        if (AccountTypeUtils.getAuthTokenTypeAccessToken(MainApp.getAccountType()).equals(mAuthTokenType)) {
-            startOauthorization();
-        } else if (AccountTypeUtils.getAuthTokenTypeSamlSessionCookie(MainApp.getAccountType())
-                .equals(mAuthTokenType)) {
-
-            startSamlBasedFederatedSingleSignOnAuthorization();
+        if(webViewLoginMethod) {
+            showWebViewLogin();
         } else {
-            checkBasicAuthorization(null, null);
+            if (AccountTypeUtils.getAuthTokenTypeAccessToken(MainApp.getAccountType()).equals(mAuthTokenType)) {
+                startOauthorization();
+            } else if (AccountTypeUtils.getAuthTokenTypeSamlSessionCookie(MainApp.getAccountType())
+                    .equals(mAuthTokenType)) {
+
+                startSamlBasedFederatedSingleSignOnAuthorization();
+            } else {
+                checkBasicAuthorization(null, null);
+            }
         }
+
 
     }
 
@@ -1394,9 +1399,13 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         mWaitingForOpId = Long.MAX_VALUE;
 
         // update server status, but don't show it yet
-        if (!webViewLoginMethod) {
-            updateServerStatusIconAndText(result);
-        }
+//        if (!webViewLoginMethod) {
+//            updateServerStatusIconAndText(result);
+//            showServerStatus();
+//        }
+
+        updateServerStatusIconAndText(result);
+        showServerStatus();
 
         if (result.isSuccess()) {
             /// SUCCESS means:
@@ -1413,13 +1422,10 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
                 checkBasicAuthorization(webViewUser, webViewPassword);
             } else if (webViewLoginMethod) {
                 // hide old login
-                mOkButton.setVisibility(View.GONE);
+                mOkButton.setVisibility(View.VISIBLE);
+
                 mUsernameInputLayout.setVisibility(View.GONE);
                 mPasswordInputLayout.setVisibility(View.GONE);
-
-                setContentView(R.layout.account_setup_webview);
-                mLoginWebView = (WebView) findViewById(R.id.login_webview);
-                initWebViewLogin(mServerInfo.mBaseUrl);
             } else {
                 // show old login
                 mOkButton.setVisibility(View.VISIBLE);
@@ -1436,6 +1442,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
                 mServerIsValid = false;
 
             } else {
+
                 mServerIsValid = true;
             }
 
@@ -1462,6 +1469,17 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         if (result.getCode() == ResultCode.SSL_RECOVERABLE_PEER_UNVERIFIED) {
             showUntrustedCertDialog(result);
         }
+    }
+
+    private void showWebViewLogin() {
+        // hide old login
+        mOkButton.setVisibility(View.GONE);
+        mUsernameInputLayout.setVisibility(View.GONE);
+        mPasswordInputLayout.setVisibility(View.GONE);
+
+        setContentView(R.layout.account_setup_webview);
+        mLoginWebView = (WebView) findViewById(R.id.login_webview);
+        initWebViewLogin(mServerInfo.mBaseUrl);
     }
 
 
