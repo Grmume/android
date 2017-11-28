@@ -51,6 +51,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.net.Network;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
@@ -86,6 +87,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
@@ -225,6 +227,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     private EditText mPasswordInput;
 
     /// Authentication advanced elements
+    private LinearLayout mAdvancedSettingsLayout;
+    private CheckBox mShowAdvancedSettingsCheckbox;
     private EditText mWifiSsidInput;
     private EditText mLocalUrlInput;
 
@@ -568,6 +572,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         mServerStatusView = (TextView) findViewById(R.id.server_status_text);
         mTestServerButton = (ImageButton) findViewById(R.id.testServerButton);
 
+        mAdvancedSettingsLayout = (LinearLayout) findViewById(R.id.advanced_settings_layout);
+        mShowAdvancedSettingsCheckbox = (CheckBox) findViewById(R.id.advanced_settings_check);
         mWifiSsidInput = (EditText) findViewById(R.id.wifi_ssid);
         mLocalUrlInput = (EditText) findViewById(R.id.local_ip);
 
@@ -1080,13 +1086,23 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
 
     private void checkOcServer() {
-        String uri;
+        String uri = null;
         if (mHostUrlInput != null) {
             uri = mHostUrlInput.getText().toString().trim();
+        }
+
+        if(mShowAdvancedSettingsCheckbox.isChecked()) {
+            if(NetworkUtils.currentlyConnectedToSsid(mWifiSsidInput.getText().toString(),getApplicationContext())) {
+                uri = mLocalUrlInput.getText().toString().trim();
+            }
+        }
+
+        if(uri == null) {
+            uri = mServerInfo.mBaseUrl;
+        }
+        else {
             mOkButton.setEnabled(false);
             showRefreshButton(false);
-        } else {
-            uri = mServerInfo.mBaseUrl;
         }
 
         mServerIsValid = false;
@@ -1208,9 +1224,10 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
             mServerStatusText = R.string.auth_wtf_reenter_URL;
             showServerStatus();
             mOkButton.setEnabled(false);
+            Log_OC.d(TAG, "OnOkClick: Check failed!");
             return;
         }
-
+        Log_OC.d(TAG, "OnOkClick: Check succeded!");
         if(webViewLoginMethod) {
             showWebViewLogin();
         } else {
@@ -1412,7 +1429,11 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
             //      1. connection succeeded, and we know if it's SSL or not
             //      2. server is installed
             //      3. we got the server version
-            //      4. we got the authentication method required by the server 
+            //      4. we got the authentication method required by the server
+
+            // Enable the connect button
+            mOkButton.setEnabled(true);
+
             mServerInfo = (GetServerInfoOperation.ServerInfo) (result.getData().get(0));
 
             webViewLoginMethod = mServerInfo.mVersion.isWebLoginSupported() && !forceOldLoginMethod;
@@ -1472,10 +1493,14 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     }
 
     private void showWebViewLogin() {
+
         // hide old login
         mOkButton.setVisibility(View.GONE);
         mUsernameInputLayout.setVisibility(View.GONE);
         mPasswordInputLayout.setVisibility(View.GONE);
+        mAdvancedSettingsLayout.setVisibility(View.GONE);
+
+        Log_OC.d(TAG, "showing webview with address "+mServerInfo.mBaseUrl);
 
         setContentView(R.layout.account_setup_webview);
         mLoginWebView = (WebView) findViewById(R.id.login_webview);
@@ -1980,14 +2005,25 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
             );
 
             // include wifi ssid and local network url of server in account
-            // TODO Add the string constants to Constants.
             mAccountMgr.setUserData(
                     mAccount,
-                    "wifi_ssid",
+                    Constants.KEY_OC_LOCAL_WIFI_SSID,
+                    mLocalUrlInput.getText().toString().trim()
+            );
+
+            mAccountMgr.setUserData(
+                    mAccount,
+                    Constants.KEY_OC_LOCAL_BASE_URL,
                     mWifiSsidInput.getText().toString()
             );
 
-            Uri localUri = Uri.parse(mLocalUrlInput.getText().toString());
+            mAccountMgr.setUserData(
+                    mAccount,
+                    Constants.KEY_OC_USE_LOCAL_BASE_URL,
+                    String.valueOf(mShowAdvancedSettingsCheckbox.isChecked())
+            );
+
+
 
             String localAccountName = com.owncloud.android.lib.common.accounts.AccountUtils.
                     buildAccountName(uri, username);
@@ -2143,6 +2179,23 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
             mAuthTokenType = BASIC_TOKEN_TYPE;
         }
         updateAuthenticationPreFragmentVisibility();
+    }
+
+    /**
+     * Called when the checkbox for show advanced settings is clicked.
+     *
+     * @param view 'View password' 'button'
+     */
+    public void onShowAdvancedSettingsClick(View view) {
+        if(mShowAdvancedSettingsCheckbox.isChecked()) {
+            if(NetworkUtils.isConnectedToWifi(getApplicationContext()))
+            {
+                mWifiSsidInput.setText(NetworkUtils.getCurrentWifiSsid(getApplicationContext()));
+            }
+            mAdvancedSettingsLayout.setVisibility(View.VISIBLE);
+        }else {
+            mAdvancedSettingsLayout.setVisibility(View.GONE);
+        }
     }
 
 

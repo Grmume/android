@@ -529,4 +529,5 @@
     <string name="whats_new_fingerprint_content">Käytä sormenjälkeäsi sovelluksen lukituksen avaamiseen</string>
     <string name="prefs_sourcecode">Hanki lähdekoodi</string>
     <string name="prefs_license">Lisenssi</string>
-    </resources>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
+</resources>

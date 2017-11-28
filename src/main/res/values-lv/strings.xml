@@ -382,5 +382,6 @@
     <string name="welcome_feature_3_text">Glabājiet savus fotoattēlus drošībā</string>
 
     <string name="whats_new_skip">Izlaist</string>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
 
-    </resources>
+</resources>

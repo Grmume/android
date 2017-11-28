@@ -406,4 +406,5 @@
     <string name="fallback_weblogin_back">العودة</string>
     <string name="prefs_sourcecode">الحصول على الشفرة المصدرية</string>
     <string name="prefs_license">الرخصة</string>
-    </resources>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
+</resources>

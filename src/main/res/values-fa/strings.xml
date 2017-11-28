@@ -401,4 +401,5 @@
     <string name="contacts_preference_backup_never">هیچ وقت</string>
     <string name="contacts_preferences_no_file_found">هیچ فایلی یافت نشد</string>
     <string name="privacy">حریم خصوصی</string>
-    </resources>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
+</resources>

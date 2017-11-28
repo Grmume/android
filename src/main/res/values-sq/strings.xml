@@ -689,4 +689,5 @@
 
     <string name="prefs_sourcecode">Merr kodin burimor</string>
     <string name="prefs_license">Liçensë</string>
-    </resources>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
+</resources>

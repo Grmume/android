@@ -20,6 +20,7 @@
 -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
@@ -131,24 +132,23 @@
 			    />
 		</FrameLayout>
 
-		<TextView
-            android:id="@+id/server_status_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/alternate_margin"
-            android:drawableLeft="@android:drawable/stat_notify_sync"
-            android:drawableStart="@android:drawable/stat_notify_sync"
-            android:drawablePadding="@dimen/alternate_half_padding"
-            android:gravity="center_vertical"
-            android:textColor="@color/login_text_color"
-            android:text="@string/auth_testing_connection"
-            android:minHeight="@dimen/display_text_min_height"
-            android:contentDescription="@string/auth_testing_connection"/>
+            <CheckBox
+                android:id="@+id/advanced_settings_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:contentDescription="@string/oauth_check_onoff"
+                android:onClick="onShowAdvancedSettingsClick"
+                android:text="@string/enable_advanced_settings"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white" />
 
             <LinearLayout
+                android:id="@+id/advanced_settings_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/advanced_settings_header"
@@ -187,19 +187,32 @@
 
             </LinearLayout>
 
-            <CheckBox
-            android:id="@+id/oauth_onOff_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:onClick="onCheckClick"
-            android:text="@string/oauth_check_onoff"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/white"
-            android:contentDescription="@string/oauth_check_onoff"
-            />
+            <TextView
+                android:id="@+id/server_status_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/alternate_margin"
+                android:contentDescription="@string/auth_testing_connection"
+                android:drawableLeft="@android:drawable/stat_notify_sync"
+                android:drawablePadding="@dimen/alternate_half_padding"
+                android:drawableStart="@android:drawable/stat_notify_sync"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/display_text_min_height"
+                android:text="@string/auth_testing_connection"
+                android:textColor="@color/login_text_color" />
 
-        <android.support.design.widget.TextInputLayout
+            <CheckBox
+                android:id="@+id/oauth_onOff_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:contentDescription="@string/oauth_check_onoff"
+                android:onClick="onCheckClick"
+                android:text="@string/oauth_check_onoff"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white" />
+
+            <android.support.design.widget.TextInputLayout
             android:id="@+id/input_layout_oAuthEntryPoint_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

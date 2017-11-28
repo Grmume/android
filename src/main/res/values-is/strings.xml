@@ -688,4 +688,5 @@ Smelltu hér til að fá þér einn frá þjónustuaðila.</string>
     <string name="foreground_service_download">Sæki skrár&#8230;</string>
 
     <string name="prefs_license">Notkunarleyfi</string>
-    </resources>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
+</resources>

@@ -463,4 +463,5 @@
 
     <string name="fallback_weblogin_back">TILBAGE</string>
     <string name="prefs_license">Licens</string>
-    </resources>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
+</resources>

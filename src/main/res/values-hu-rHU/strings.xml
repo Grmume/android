@@ -513,4 +513,5 @@
     <string name="contacts_preference_backup_never">soha</string>
     <string name="drawer_logout">Kijelentkezés</string>
     <string name="privacy">Titoktartás</string>
-    </resources>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
+</resources>

@@ -511,5 +511,6 @@
     <string name="welcome_feature_3_text">Mantingueu les vostres fotos segures</string>
 
     <string name="whats_new_skip">Omet</string>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
 
-    </resources>
+</resources>

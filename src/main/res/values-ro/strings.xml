@@ -403,5 +403,6 @@
     <string name="welcome_feature_3_text">Păstrează-ți fotografiile în siguranță</string>
 
     <string name="whats_new_skip">Sari peste</string>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
 
-    </resources>
+</resources>

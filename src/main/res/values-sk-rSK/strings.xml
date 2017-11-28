@@ -440,4 +440,5 @@
     <string name="user_info_twitter">Twitter</string>
 
     <string name="user_information_description">Informácie o používateľovi</string>
-    </resources>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
+</resources>

@@ -349,5 +349,6 @@
     <string name="welcome_feature_2_text">Ligar-se a todas as suas contas cloud</string>
 
     <string name="whats_new_skip">Passar à frente</string>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
 
-    </resources>
+</resources>

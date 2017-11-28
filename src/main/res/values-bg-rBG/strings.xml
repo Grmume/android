@@ -441,5 +441,6 @@
     <string name="new_notification_received">Получено е ново известие</string>
     <string name="drawer_logout">Отпиши се</string>
     <string name="file_not_found">Файлът не е открит</string>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
 
-    </resources>
+</resources>

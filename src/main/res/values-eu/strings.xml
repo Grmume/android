@@ -394,5 +394,6 @@ Mesedez, baimendu berriz</string>
     <string name="share_privilege_can_edit_delete">ezabatu</string>
     <string name="storage_description_default">Lehenetsia</string>
     <string name="storage_description_unknown">Ezezaguna</string>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
 
-    </resources>
+</resources>

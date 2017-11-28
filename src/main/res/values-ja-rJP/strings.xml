@@ -493,4 +493,5 @@
 
     <!-- Notifications -->
     <string name="new_notification_received">新しい通知を受け取りました</string>
-    </resources>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
+</resources>

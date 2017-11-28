@@ -693,4 +693,5 @@
     <string name="push_notifications_not_implemented">Push oznámení zakázáno kvůli závislostem na proprietárních službách Google Play.</string>
     <string name="push_notifications_old_login">Žádné push oznámení kvůli zastaralé relaci přihlášení. Zvažte opětovné přidání účtu.</string>
     <string name="push_notifications_temp_error">Push oznámení není momentálně k dispozici.</string>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
 </resources>

@@ -676,5 +676,6 @@
     <string name="whats_new_fingerprint_content">Gunakan sidik jadi untuk membuka aplikasi.</string>
     <string name="fallback_weblogin_back">KEMBALI</string>
     <string name="fallback_weblogin_text">Kembali ke metode login lama.</string>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
 
-    </resources>
+</resources>

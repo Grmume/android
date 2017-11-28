@@ -500,4 +500,5 @@
     <!-- Notifications -->
     <string name="new_notification_received">Recibióse un avisu nuevu</string>
     <string name="drawer_logout">Zarrar sesión</string>
-    </resources>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
+</resources>

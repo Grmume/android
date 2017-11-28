@@ -538,5 +538,6 @@
 
     <string name="foreground_service_upload">파일 업로드 중&#8230;</string>
     <string name="foreground_service_download">파일 다운로드 중&#8230;</string>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
 
-    </resources>
+</resources>

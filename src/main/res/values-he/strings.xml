@@ -373,5 +373,6 @@
 
     <string name="welcome_feature_2_title">חשבונות מרובים</string>
     <string name="whats_new_skip">דלג</string>
+    <string name="enable_advanced_settings">Enable advanced settings</string>
 
-    </resources>
+</resources>
