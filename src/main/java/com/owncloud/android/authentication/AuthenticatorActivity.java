@@ -1480,7 +1480,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
         if (!mServerIsValid) {
             // hide old login
-            mOkButton.setVisibility(View.GONE);
+            //mOkButton.setVisibility(View.GONE); // Do not hide connect button
             mUsernameInputLayout.setVisibility(View.GONE);
             mPasswordInputLayout.setVisibility(View.GONE);
         }

@@ -304,18 +304,18 @@
             android:textColor="@color/login_text_color"
             android:contentDescription="@string/auth_unauthorized"/>
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/buttonOK"
-            android:theme="@style/Button.Login"
-            style="@style/Button.Login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="@dimen/standard_padding"
-            android:enabled="false"
-            android:text="@string/setup_btn_connect"
-            android:contentDescription="@string/setup_btn_connect"
-            android:visibility="gone"/>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/buttonOK"
+                style="@style/Button.Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/setup_btn_connect"
+                android:enabled="false"
+                android:padding="@dimen/standard_padding"
+                android:text="@string/setup_btn_connect"
+                android:theme="@style/Button.Login"
+                android:visibility="visible" />
 
             <LinearLayout
             android:layout_width="match_parent"
