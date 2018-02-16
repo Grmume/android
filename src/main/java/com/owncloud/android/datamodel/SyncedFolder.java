@@ -35,6 +35,7 @@ public class SyncedFolder implements Serializable, Cloneable {
     private Boolean wifiOnly;
     private Boolean chargingOnly;
     private Boolean subfolderByDate;
+    private String subfolderPattern;
     private String account;
     private Integer uploadAction;
     private boolean enabled;
@@ -90,6 +91,7 @@ public class SyncedFolder implements Serializable, Cloneable {
         this.wifiOnly = wifiOnly;
         this.chargingOnly = chargingOnly;
         this.subfolderByDate = subfolderByDate;
+        this.subfolderPattern = 
         this.account = account;
         this.uploadAction = uploadAction;
         this.enabled = enabled;
@@ -146,6 +148,9 @@ public class SyncedFolder implements Serializable, Cloneable {
 
     public Boolean getSubfolderByDate() {
         return subfolderByDate;
+    }
+    public String getSubfolderByDate() {
+        return subfolderPattern;
     }
 
     public void setSubfolderByDate(Boolean subfolderByDate) {

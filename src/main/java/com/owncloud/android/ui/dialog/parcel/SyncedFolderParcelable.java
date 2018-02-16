@@ -38,6 +38,7 @@ public class SyncedFolderParcelable implements Parcelable {
     private Boolean mChargingOnly = false;
     private Boolean mEnabled = false;
     private Boolean mSubfolderByDate = false;
+    private String mSubfolderPattern;
     private Integer mUploadAction;
     private MediaFolderType mType;
     private long mId;
